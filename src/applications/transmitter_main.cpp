@@ -4,7 +4,7 @@
 #include <stdio.h>
 
 // DMX transmitter with configurable channels
-// This Pico will send DMX data on GPIO pin 0
+// This Pico will send DMX data on GPIO pin 1
 
 int main() {
     // Initialize stdio
@@ -15,8 +15,8 @@ int main() {
     
     printf("DMX Transmitter Starting...\n");
     
-    // Create DMX transmitter on GPIO 0
-    DMXTransmitter dmx_tx(0, pio0);
+    // Create DMX transmitter on GPIO 1
+    DMXTransmitter dmx_tx(1, pio0);
     
     // Initialize the transmitter
     DmxOutput::return_code result = dmx_tx.begin();
