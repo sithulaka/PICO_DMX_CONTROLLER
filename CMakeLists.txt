@@ -25,6 +25,7 @@ include_directories(src/config)
 set(CORE_SOURCES
     src/core/dmx_transmitter.cpp
     src/core/dmx_receiver.cpp
+    src/core/dmx_multi_receiver.cpp
     src/config/dmx_config.cpp
 )
 
@@ -37,6 +38,12 @@ add_executable(dmx_transmitter
 # DMX Receiver executable
 add_executable(dmx_receiver
     src/applications/receiver_main.cpp
+    ${CORE_SOURCES}
+)
+
+# Multi-Universe DMX Receiver executable
+add_executable(dmx_multi_receiver
+    src/applications/multi_receiver_main.cpp
     ${CORE_SOURCES}
 )
 
@@ -56,6 +63,14 @@ target_link_libraries(dmx_receiver
     hardware_dma
 )
 
+# Link libraries for multi-receiver
+target_link_libraries(dmx_multi_receiver
+    pico_stdlib
+    picodmx
+    hardware_pio
+    hardware_dma
+)
+
 # Enable USB output for debugging
 pico_enable_stdio_usb(dmx_transmitter 1)
 pico_enable_stdio_uart(dmx_transmitter 0)
@@ -63,6 +78,10 @@ pico_enable_stdio_uart(dmx_transmitter 0)
 pico_enable_stdio_usb(dmx_receiver 1)
 pico_enable_stdio_uart(dmx_receiver 0)
 
+pico_enable_stdio_usb(dmx_multi_receiver 1)
+pico_enable_stdio_uart(dmx_multi_receiver 0)
+
 # Create map/bin/hex/uf2 files
 pico_add_extra_outputs(dmx_transmitter)
 pico_add_extra_outputs(dmx_receiver)
+pico_add_extra_outputs(dmx_multi_receiver)

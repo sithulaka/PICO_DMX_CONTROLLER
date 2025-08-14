@@ -7,7 +7,7 @@ This folder contains three different DMX transmitter examples demonstrating vari
 ### 1. 🔹 Single Universe Example (`single_universe_example.cpp`)
 
 **Purpose:** Basic DMX transmission with one universe  
-**GPIO:** Pin 0  
+**GPIO:** Pin 1  
 **Features:**
 - Simple channel control
 - RGB LED strip example
@@ -37,10 +37,10 @@ This folder contains three different DMX transmitter examples demonstrating vari
 ### 3. 🚀 Parallel Universe Example (`parallel_universe_example.cpp`)
 
 **Purpose:** Multiple DMX universes with different patterns  
-**GPIO:** Pins 0-7 (configurable 1-8 universes)  
+**GPIO:** Pins 1-8 (configurable 1-8 universes)  
 **Features:**
 - Up to 8 parallel DMX universes
-- PIO distribution (pio0: pins 0-3, pio1: pins 4-7)
+- PIO distribution (pio0: pins 1-4, pio1: pins 5-8)
 - Unique patterns per universe:
   - Universe 1: Red gradient
   - Universe 2: Green gradient  
@@ -58,7 +58,7 @@ This folder contains three different DMX transmitter examples demonstrating vari
 
 ### Single Universe
 ```
-Pico GPIO 0 → DMX Output 1
+Pico GPIO 1 → DMX Output 1
 ```
 
 ### Custom Pattern  
@@ -68,14 +68,14 @@ Pico GPIO 1 → DMX Output (RGB fixtures recommended)
 
 ### Parallel Universe
 ```
-Pico GPIO 0 → DMX Universe 1
-Pico GPIO 1 → DMX Universe 2  
-Pico GPIO 2 → DMX Universe 3
-Pico GPIO 3 → DMX Universe 4
-Pico GPIO 4 → DMX Universe 5
-Pico GPIO 5 → DMX Universe 6
-Pico GPIO 6 → DMX Universe 7
-Pico GPIO 7 → DMX Universe 8
+Pico GPIO 1 → DMX Universe 1
+Pico GPIO 2 → DMX Universe 2  
+Pico GPIO 3 → DMX Universe 3
+Pico GPIO 4 → DMX Universe 4
+Pico GPIO 5 → DMX Universe 5
+Pico GPIO 6 → DMX Universe 6
+Pico GPIO 7 → DMX Universe 7
+Pico GPIO 8 → DMX Universe 8
 ```
 
 ## How to Use

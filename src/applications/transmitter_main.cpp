@@ -4,12 +4,12 @@
 #include <stdio.h>
 
 // 8 Parallel DMX Universe Transmitter
-// Uses GPIO pins 0-7 for 8 different DMX universes
-// PIO0 handles pins 0-3, PIO1 handles pins 4-7
+// Uses GPIO pins 1-8 for 8 different DMX universes
+// PIO0 handles pins 1-4, PIO1 handles pins 5-8
 
 // User configurable number of universes (1-8)
 // Change this value to control how many universes are active
-// Each universe uses one GPIO pin (0-7) and different data patterns
+// Each universe uses one GPIO pin (1-8) and different data patterns
 static uint8_t NUM_ACTIVE_UNIVERSES = 8; // Change this to use fewer universes
 
 int main() {
@@ -30,14 +30,14 @@ int main() {
     
     // Create array of DMX transmitters for each universe
     DMXTransmitter dmx_outputs[MAX_DMX_UNIVERSES] = {
-        DMXTransmitter(0, pio0), // Universe 1 on GPIO 0
-        DMXTransmitter(1, pio0), // Universe 2 on GPIO 1  
-        DMXTransmitter(2, pio0), // Universe 3 on GPIO 2
-        DMXTransmitter(3, pio0), // Universe 4 on GPIO 3
-        DMXTransmitter(4, pio1), // Universe 5 on GPIO 4
-        DMXTransmitter(5, pio1), // Universe 6 on GPIO 5
-        DMXTransmitter(6, pio1), // Universe 7 on GPIO 6
-        DMXTransmitter(7, pio1)  // Universe 8 on GPIO 7
+        DMXTransmitter(1, pio0), // Universe 1 on GPIO 1
+        DMXTransmitter(2, pio0), // Universe 2 on GPIO 2  
+        DMXTransmitter(3, pio0), // Universe 3 on GPIO 3
+        DMXTransmitter(4, pio0), // Universe 4 on GPIO 4
+        DMXTransmitter(5, pio1), // Universe 5 on GPIO 5
+        DMXTransmitter(6, pio1), // Universe 6 on GPIO 6
+        DMXTransmitter(7, pio1), // Universe 7 on GPIO 7
+        DMXTransmitter(8, pio1)  // Universe 8 on GPIO 8
     };
     
     // Initialize only the active transmitters

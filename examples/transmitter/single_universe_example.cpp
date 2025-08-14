@@ -2,9 +2,9 @@
  * Single Universe DMX Transmitter Example
  * 
  * This example demonstrates how to transmit a single DMX universe
- * with basic channel control on GPIO pin 0.
+ * with basic channel control on GPIO pin 1.
  * 
- * Hardware: Connect DMX output to GPIO 0
+ * Hardware: Connect DMX output to GPIO 1
  */
 
 #include "pico/stdlib.h"
@@ -17,10 +17,10 @@ int main() {
     sleep_ms(2000);
     
     printf("Single Universe DMX Transmitter Example\n");
-    printf("GPIO: 0, Universe: 1\n");
+    printf("GPIO: 1, Universe: 1\n");
     
-    // Create DMX transmitter on GPIO 0
-    DMXTransmitter dmx_tx(0, pio0);
+    // Create DMX transmitter on GPIO 1
+    DMXTransmitter dmx_tx(1, pio0);
     
     // Initialize the transmitter
     DmxOutput::return_code result = dmx_tx.begin();

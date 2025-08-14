@@ -46,7 +46,7 @@ A comprehensive DMX-512 communication system for the Raspberry Pi Pico, featurin
 ```
 Raspberry Pi Pico    →    RS-485 Module    →    DMX Output
 ───────────────────       ─────────────────    ────────────
-GPIO 0 (TX)         →    DI (Data Input)   
+GPIO 1 (TX)         →    DI (Data Input)   
 3.3V                →    VCC               
 GND                 →    GND               
                          A+                →    DMX Pin 3 (Data+)
@@ -364,8 +364,8 @@ ERR_INVALID_CHANNEL = -5        // Channel number out of range (1-512)
 
 ```cpp
 // Example: Control two DMX universes
-DMXTransmitter universe1(0, pio0);  // Universe 1 on GPIO 0
-DMXTransmitter universe2(2, pio0);  // Universe 2 on GPIO 2
+DMXTransmitter universe1(1, pio0);  // Universe 1 on GPIO 1
+DMXTransmitter universe2(3, pio0);  // Universe 2 on GPIO 3
 
 // Each universe can have different channel configurations
 universe1.setChannel(1, 255);   // Universe 1, Channel 1

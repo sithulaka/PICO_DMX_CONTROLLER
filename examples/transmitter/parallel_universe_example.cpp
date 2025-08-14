@@ -5,12 +5,12 @@
  * each with different content. Based on the Arduino code structure provided.
  * 
  * Features:
- * - 8 parallel DMX universes (GPIO pins 0-7)
+ * - 8 parallel DMX universes (GPIO pins 1-8)
  * - Different patterns per universe
- * - PIO distribution: pio0 handles pins 0-3, pio1 handles pins 4-7
+ * - PIO distribution: pio0 handles pins 1-4, pio1 handles pins 5-8
  * - User configurable universe count (1-8)
  * 
- * Hardware: Connect DMX outputs to GPIO pins 0-7
+ * Hardware: Connect DMX outputs to GPIO pins 1-8
  */
 
 #include "pico/stdlib.h"
@@ -107,8 +107,8 @@ int main() {
     sleep_ms(2000);
     
     printf("Parallel Universe DMX Transmitter Example\n");
-    printf("Active universes: %d (GPIO pins 0-%d)\n", 
-           NUM_ACTIVE_UNIVERSES, NUM_ACTIVE_UNIVERSES - 1);
+    printf("Active universes: %d (GPIO pins 1-%d)\n", 
+           NUM_ACTIVE_UNIVERSES, NUM_ACTIVE_UNIVERSES);
     
     // Validate universe count
     if (NUM_ACTIVE_UNIVERSES > MAX_UNIVERSES) {
@@ -121,14 +121,14 @@ int main() {
     // the 8 outputs are divided onto the two PIO instances
     // pio0 and pio1
     DMXTransmitter dmx_outputs[MAX_UNIVERSES] = {
-        DMXTransmitter(0, pio0), // Universe 1
-        DMXTransmitter(1, pio0), // Universe 2  
-        DMXTransmitter(2, pio0), // Universe 3
-        DMXTransmitter(3, pio0), // Universe 4
-        DMXTransmitter(4, pio1), // Universe 5
-        DMXTransmitter(5, pio1), // Universe 6
-        DMXTransmitter(6, pio1), // Universe 7
-        DMXTransmitter(7, pio1)  // Universe 8
+        DMXTransmitter(1, pio0), // Universe 1
+        DMXTransmitter(2, pio0), // Universe 2  
+        DMXTransmitter(3, pio0), // Universe 3
+        DMXTransmitter(4, pio0), // Universe 4
+        DMXTransmitter(5, pio1), // Universe 5
+        DMXTransmitter(6, pio1), // Universe 6
+        DMXTransmitter(7, pio1), // Universe 7
+        DMXTransmitter(8, pio1)  // Universe 8
     };
     
     // Initialize active transmitters
@@ -137,10 +137,10 @@ int main() {
         DmxOutput::return_code result = dmx_outputs[i].begin();
         if (result != DmxOutput::SUCCESS) {
             printf("Failed to initialize Universe %d on GPIO %d: %d\n", 
-                   i + 1, i, result);
+                   i + 1, i + 1, result);
             return 1;
         }
-        printf("Universe %d initialized on GPIO %d\n", i + 1, i);
+        printf("Universe %d initialized on GPIO %d\n", i + 1, i + 1);
     }
     
     // Setup unique patterns for each universe
@@ -181,8 +181,8 @@ int main() {
             if (transmission_count % 1000 == 0) {
                 printf("Transmitted %lu frames across %d parallel universes\n", 
                        transmission_count, NUM_ACTIVE_UNIVERSES);
-                printf("Each universe: 512 channels, GPIO pins 0-%d\n", 
-                       NUM_ACTIVE_UNIVERSES - 1);
+                printf("Each universe: 512 channels, GPIO pins 1-%d\n", 
+                       NUM_ACTIVE_UNIVERSES);
             }
             
             last_update = current_time;

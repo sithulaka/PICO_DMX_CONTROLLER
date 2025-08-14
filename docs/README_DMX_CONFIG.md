@@ -90,7 +90,7 @@ static const ChannelConfig DMX_CHANNEL_CONFIG[] = {
 - The system uses the standard DMX-512 protocol
 - Transmission rate: 250 kbaud (standard DMX)
 - Refresh rate: 50ms (20Hz)
-- GPIO pin: Pin 0 (configurable in transmitter_main.cpp)
+- GPIO pin: Pins 1-8 (configurable in transmitter_main.cpp)
 - All 512 channels are always transmitted for full compatibility
 - Uses PIO state machines for precise timing
 
@@ -104,6 +104,6 @@ Connect via USB serial (115200 baud) to see:
 ## Troubleshooting
 
 1. **Build errors**: Make sure all files are in the project directory
-2. **No DMX output**: Check GPIO pin 0 connections and DMX interface circuit
+2. **No DMX output**: Check GPIO pin connections (1-8) and DMX interface circuit
 3. **Wrong channel values**: Verify channel numbers are 1-512 and values are 0-255
 4. **No serial output**: Ensure USB cable supports data (not power-only)
